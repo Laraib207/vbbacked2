@@ -1,0 +1,5 @@
+- [x] Fix the <img> tag in CustomerFeedback.jsx by moving loading="lazy" before />
+- [x] Fix the <img> tag in HealthBenefits.jsx by moving loading="lazy" before />
+- [x] Fix the <img> tag in VeerBharatHero.jsx by moving loading="lazy" before />
+- [x] Fix the <img> tags in products/page.js by moving loading="lazy" before />
+- [x] Run npm run dev to start the local server on port 3002
