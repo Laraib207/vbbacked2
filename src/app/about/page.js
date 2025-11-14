@@ -1,651 +1,782 @@
-// src/app/about/page.js  (or src/pages/About.jsx)
-// Make sure to `npm install framer-motion` and put images in public:
-// /public/event1.jpg, /public/event2.jpg, /public/team1.jpg, /public/veer-logo.png
-
-  // "use client";
-
-  // import React from "react";
-  // import { motion } from "framer-motion";
-
-  // /* ============================
-  //   Small reusable Card (player/profile)
-  //   ============================ */
-  // function SpotlightCard({ img = "/team1.jpg", title, subtitle, children }) {
-  //   return (
-  //     <motion.div
-  //       initial={{ opacity: 0, y: 20, scale: 0.985 }}
-  //       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-  //       whileHover={{ scale: 1.02, y: -6 }}
-  //       viewport={{ once: true, amount: 0.3 }}
-  //       transition={{ duration: 0.45, ease: "easeOut" }}
-  //       className="bg-white rounded-2xl shadow-2xl overflow-hidden relative border border-white/60"
-  //     >
-  //       <div className="relative h-56 sm:h-64 lg:h-72">
-  //         <img
-  //           src={img}
-  //           alt={title}
-  //           className="w-full h-full object-cover transform transition-transform duration-500"
-  //         / loading="lazy">
-  //         <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-90" />
-  //         <div className="absolute left-4 bottom-4">
-  //           <div className="text-white font-bold text-xl md:text-2xl drop-shadow">{title}</div>
-  //           {subtitle && <div className="text-sm text-white/90 mt-1 drop-shadow">{subtitle}</div>}
-  //         </div>
-  //       </div>
-
-  //       <div className="p-5">
-  //         <div className="text-sm text-gray-600">{children}</div>
-  //         <div className="mt-4 flex gap-3">
-  //           <button className="px-4 py-2 rounded-full bg-red-600 text-white font-semibold shadow hover:scale-105 transition">
-  //             Learn More
-  //           </button>
-  //           <button className="px-4 py-2 rounded-full border border-gray-200 text-gray-800 bg-white hover:shadow-md transition">
-  //             Contact
-  //           </button>
-  //         </div>
-  //       </div>
-  //     </motion.div>
-  //   );
-  // }
-
-  // /* ============================
-  //   Horizontal slider / gallery
-  //   Opens left-right (slide) when in view
-  //   ============================ */
-  // function GallerySlider({ images = [] }) {
-  //   return (
-  //     <motion.div
-  //       initial={{ opacity: 0, x: -40 }}
-  //       whileInView={{ opacity: 1, x: 0 }}
-  //       viewport={{ once: true }}
-  //       transition={{ duration: 0.7 }}
-  //       className="overflow-x-auto no-scrollbar py-4"
-  //     >
-  //       <div className="flex gap-6 px-2">
-  //         {images.map((img, i) => (
-  //           <motion.div
-  //             key={i}
-  //             whileHover={{ scale: 1.03 }}
-  //             className="min-w-[280px] md:min-w-[340px] bg-white/60 rounded-2xl p-3 shadow-lg border"
-  //           >
-  //             <div className="h-44 md:h-52 overflow-hidden rounded-xl">
-  //               <img src={img} alt={`event-${i}`} className="w-full h-full object-cover" / loading="lazy">
-  //             </div>
-  //             <div className="mt-3">
-  //               <div className="font-semibold text-gray-800">Veer Bharat Display</div>
-  //               <div className="text-sm text-gray-600 mt-1">On-ground sampling & exhibition moment</div>
-  //             </div>
-  //           </motion.div>
-  //         ))}
-  //       </div>
-  //     </motion.div>
-  //   );
-  // }
-
-  // /* ============================
-  //   Blog-style card (expensive feel)
-  //   ============================ */
-  // function BlogCard({ title, excerpt }) {
-  //   return (
-  //     <motion.article
-  //       initial={{ opacity: 0, y: 20 }}
-  //       whileInView={{ opacity: 1, y: 0 }}
-  //       viewport={{ once: true }}
-  //       transition={{ duration: 0.6 }}
-  //       className="bg-gradient-to-br from-white/90 to-white rounded-2xl p-6 shadow-2xl border"
-  //     >
-  //       <h3 className="text-2xl font-extrabold text-red-600">{title}</h3>
-  //       <p className="mt-3 text-gray-700 leading-relaxed">{excerpt}</p>
-  //       <div className="mt-6 flex gap-3">
-  //         <a className="text-sm font-semibold text-red-600 hover:underline" href="#">
-  //           Read more →
-  //         </a>
-  //       </div>
-  //     </motion.article>
-  //   );
-  // }
-
-  // /* ============================
-  //   Main About page component
-  //   ============================ */
-  // export default function About() {
-  //   return (
-  //     <main className="bg-gradient-to-b from-yellow-50 via-yellow-100 to-white min-h-screen text-gray-800">
-  //       {/* HERO */}
-  //       <section className="max-w-7xl mx-auto px-6 py-12 lg:py-20">
-  //         <div className="grid gap-8 lg:grid-cols-2 items-center">
-  //           {/* Left: text + logo */}
-  //           <motion.div
-  //             initial={{ opacity: 0, x: -30 }}
-  //             whileInView={{ opacity: 1, x: 0 }}
-  //             viewport={{ once: true }}
-  //             transition={{ duration: 0.7 }}
-  //             className="space-y-6"
-  //           >
-  //             <div className="flex items-center gap-4">
-  //               <img src="/veer-logo.png" alt="Veer Bharat" className="w-20 h-20 object-contain" / loading="lazy">
-  //               <div>
-  //                 <div className="text-sm text-gray-600 uppercase tracking-widest">Sri Shyam Agro Industries</div>
-  //                 <div className="text-3xl md:text-4xl font-extrabold text-red-600">Veer Bharat</div>
-  //               </div>
-  //             </div>
-
-  //             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-  //               We deliver purity. We deliver trust.
-  //             </h1>
-
-  //             <p className="text-lg text-gray-700 max-w-xl leading-relaxed">
-  //               Veer Bharat blends tradition and modern quality — from premium mustard oils to ready-to-cook ranges. We craft every product with care and the highest standards, so every family can enjoy honest, delightful food.
-  //             </p>
-
-  //             <div className="flex gap-4 mt-4">
-  //               <a className="inline-block px-6 py-3 rounded-2xl bg-red-600 text-white font-semibold shadow hover:scale-105 transition" href="#">
-  //                 View Products
-  //               </a>
-  //               <a className="inline-block px-6 py-3 rounded-2xl border border-red-600 text-red-600 bg-white/80 hover:bg-red-50 transition" href="#">
-  //                 Contact Sales
-  //               </a>
-  //             </div>
-
-  //             {/* A short "chat-like" line in English (polished and readable) */}
-  //             <div className="mt-6 bg-gradient-to-r from-white/50 to-white/30 p-4 rounded-xl border shadow-sm">
-  //               <div className="text-sm text-gray-600 italic">
-  //                 “Warm greetings from Team Veer Bharat, Delhi — bringing flavour & smiles to every home, one dish at a time.”
-  //               </div>
-  //             </div>
-  //           </motion.div>
-
-  //           {/* Right: Spotlight / Nehru portrait card with small product row */}
-  //           <motion.div
-  //             initial={{ opacity: 0, x: 30 }}
-  //             whileInView={{ opacity: 1, x: 0 }}
-  //             viewport={{ once: true }}
-  //             transition={{ duration: 0.7 }}
-  //             className="flex flex-col gap-6"
-  //           >
-  //             <SpotlightCard
-  //               img="/event1.jpg"
-  //               title="Veer Bharat — At Exhibitions"
-  //               subtitle="Product displays & sampling"
-  //             >
-  //               Our on-ground teams in Delhi and across regions present live tasting, in-store sampling and product education — connecting families with quality food.
-  //             </SpotlightCard>
-
-  //             <div className="grid grid-cols-2 gap-4">
-  //               <div className="bg-white rounded-2xl p-4 shadow-lg border">
-  //                 <div className="text-sm text-gray-500">Recent Event</div>
-  //                 <div className="text-lg font-semibold text-gray-800">National Food Expo</div>
-  //                 <div className="mt-3 text-sm text-gray-600">Interactive demos, retail partnerships & distribution drives.</div>
-  //               </div>
-
-  //               <div className="bg-white rounded-2xl p-4 shadow-lg border">
-  //                 <div className="text-sm text-gray-500">Our Promise</div>
-  //                 <div className="text-lg font-semibold text-gray-800">100% Purity</div>
-  //                 <div className="mt-3 text-sm text-gray-600">Cold-pressed, lab-tested, and loved by households.</div>
-  //               </div>
-  //             </div>
-  //           </motion.div>
-  //         </div>
-  //       </section>
-
-  //       {/* HORIZONTAL GALLERY (opens left→right when seen) */}
-  //       <section className="max-w-7xl mx-auto px-6 py-6">
-  //         <h2 className="text-2xl font-bold text-gray-800 mb-4">Moments — Live Exhibitions & Sampling</h2>
-  //         <GallerySlider images={["/event1.jpg", "/event2.jpg", "/event1.jpg"]} />
-  //       </section>
-
-  //       {/* FEATURE HIGHLIGHTS (stats) */}
-  //       <section className="max-w-6xl mx-auto px-6 py-10">
-  //         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-  //           {[
-  //             { value: "70–80 Cr", label: "Turnover (est.)" },
-  //             { value: "100%", label: "Purity Promise" },
-  //             { value: "Pan-India", label: "Distribution" },
-  //           ].map((s, i) => (
-  //             <motion.div
-  //               key={i}
-  //               initial={{ opacity: 0, y: 20 }}
-  //               whileInView={{ opacity: 1, y: 0 }}
-  //               viewport={{ once: true }}
-  //               transition={{ duration: 0.5, delay: i * 0.08 }}
-  //               className="bg-white p-6 rounded-2xl shadow hover:shadow-2xl transition"
-  //             >
-  //               <div className="text-3xl font-extrabold text-red-600">{s.value}</div>
-  //               <div className="text-sm text-gray-600 mt-1">{s.label}</div>
-  //             </motion.div>
-  //           ))}
-  //         </div>
-  //       </section>
-
-  //       {/* BLOG/ARTICLE AREA — expensive editorial style */}
-  //       <section className="max-w-5xl mx-auto px-6 py-12">
-  //         <h2 className="text-3xl font-extrabold text-gray-800 mb-6">Stories from the Field</h2>
-
-  //         <div className="grid gap-6 lg:grid-cols-2">
-  //           <BlogCard
-  //             title="How our Delhi team brought flavour to local markets"
-  //             excerpt="Our Delhi activation team travelled store-to-store, serving warm samples and explaining the craft behind our oils — one dish at a time. Consumers loved the taste and authenticity, and retail partners asked for expanded listings."
-  //           />
-  //           <BlogCard
-  //             title="From trading to cuisine: The evolution of Veer Bharat"
-  //             excerpt="What started as trade in cereals and grains became a journey into food manufacturing. Today we celebrate the families that trusted our products and inspired our product expansion."
-  //           />
-  //         </div>
-  //       </section>
-
-  //       {/* TIMELINE / JOURNEY — classy */}
-  //       <section className="bg-gradient-to-b from-white to-red-50 py-12">
-  //         <div className="max-w-4xl mx-auto px-6 space-y-6">
-  //           <h2 className="text-2xl font-bold text-gray-800 text-center">Journey So Far</h2>
-
-  //           <div className="space-y-4">
-  //             {[
-  //               { year: "2014", text: "Started trading rice, wheat & corn" },
-  //               { year: "2018", text: "Expanded trading of oil refineries" },
-  //               { year: "2022", text: "Launched Veer Bharat brand" },
-  //               { year: "2025", text: "Scaling product lines & retail presence" },
-  //             ].map((t, i) => (
-  //               <motion.div
-  //                 key={i}
-  //                 initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-  //                 whileInView={{ opacity: 1, x: 0 }}
-  //                 viewport={{ once: true }}
-  //                 transition={{ duration: 0.6, delay: i * 0.06 }}
-  //                 className="bg-white rounded-xl p-5 shadow hover:shadow-lg transition"
-  //               >
-  //                 <div className="flex items-center justify-between">
-  //                   <div>
-  //                     <div className="text-sm text-gray-500">{t.year}</div>
-  //                     <div className="text-md font-semibold text-gray-700">{t.text}</div>
-  //                   </div>
-  //                   <div className="text-red-600 font-bold">•</div>
-  //                 </div>
-  //               </motion.div>
-  //             ))}
-  //           </div>
-  //         </div>
-  //       </section>
-
-  //       {/* CTA & Footer-ish */}
-  //       <section className="py-12">
-  //         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-  //           <div>
-  //             <div className="text-xl font-bold">Join the Veer Bharat journey</div>
-  //             <div className="text-sm text-gray-600 mt-1">
-  //               For distribution, partnerships or product trials — get in touch.
-  //             </div>
-  //           </div>
-  //           <div className="flex gap-3">
-  //             <a className="px-5 py-3 rounded-2xl bg-red-600 text-white font-semibold hover:scale-105 transition" href="/contact">
-  //               Contact Us
-  //             </a>
-  //             <a className="px-5 py-3 rounded-2xl border border-gray-300 text-gray-800 hover:bg-gray-50 transition" href="/company-profile.pdf">
-  //               Company Profile
-  //             </a>
-  //           </div>
-  //         </div>
-  //       </section>
-  //     </main>
-  //   );
-  // }
-
-
-
-//   "use client";
-
-// import React from "react";
-// import { motion } from "framer-motion";
-
-// /* ============================
-//    About Page (Veer Bharat style)
-//    ============================ */
-// export default function About() {
-//   return (
-//     <main
-//       className="min-h-screen text-gray-800"
-//       style={{ backgroundColor: "#fef9c3" }}
-//     >
-//       {/* BELIEF SECTION */}
-//       <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
-//         {/* Text left */}
-//         <motion.div
-//           initial={{ opacity: 0, x: -40 }}
-//           whileInView={{ opacity: 1, x: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.6 }}
-//           className="space-y-6"
-//         >
-//           <h2 className="text-4xl md:text-5xl font-extrabold text-yellow-600 uppercase tracking-wide">
-//             The Belief
-//           </h2>
-//           <p className="text-lg leading-relaxed text-gray-700">
-//             At <span className="font-bold">Veer Bharat</span>, we believe in the
-//             power of nourishment and trust. Every home deserves food that is
-//             pure, safe, and crafted with care. That’s why we bring you premium
-//             edible oils, rice, and ready-to-cook products that combine{" "}
-//             <span className="font-semibold">quality, taste, and health</span>.
-//           </p>
-//           <p className="text-lg leading-relaxed text-gray-700">
-//             With Veer Bharat, you don’t just enhance the flavor of your meals —
-//             you choose authenticity and purity. Our promise is simple: to bring
-//             every family closer through food that is wholesome, trusted, and
-//             made with love.
-//           </p>
-//         </motion.div>
-
-//         {/* Image right */}
-//         <motion.div
-//           initial={{ opacity: 0, x: 40 }}
-//           whileInView={{ opacity: 1, x: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.6 }}
-//           className="flex justify-center"
-//         >
-//           <img
-//             src="/images/veer-products.png"
-//             alt="Veer Bharat Products"
-//             className="max-w-lg w-full object-contain drop-shadow-xl"
-//           / loading="lazy">
-//         </motion.div>
-//       </section>
-
-//       {/* LEGACY SECTION */}
-//       <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
-//         {/* Image left */}
-//         <motion.div
-//           initial={{ opacity: 0, x: -40 }}
-//           whileInView={{ opacity: 1, x: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.6 }}
-//           className="flex justify-center order-2 md:order-1"
-//         >
-//           <img
-//             src="/images/veer-products.png"
-//             alt="Veer Bharat Legacy Products"
-//             className="max-w-lg w-full object-contain drop-shadow-xl"
-//           / loading="lazy">
-//         </motion.div>
-
-//         {/* Text right */}
-//         <motion.div
-//           initial={{ opacity: 0, x: 40 }}
-//           whileInView={{ opacity: 1, x: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.6 }}
-//           className="space-y-6 order-1 md:order-2"
-//         >
-//           <h2 className="text-4xl md:text-5xl font-extrabold text-yellow-600 uppercase tracking-wide">
-//             The Legacy
-//           </h2>
-//           <p className="text-lg leading-relaxed text-gray-700">
-//             Our journey began with a vision — to bring premium, affordable food
-//             essentials to Indian households. Over the years,{" "}
-//             <span className="font-bold">Veer Bharat</span> has become a trusted
-//             name, offering oils, rice, pasta, vermicelli, noodles, and more.
-//           </p>
-//           <p className="text-lg leading-relaxed text-gray-700">
-//             Each product is crafted in state-of-the-art facilities, tested for
-//             quality, and packed with care. From humble beginnings to serving
-//             families across India, our legacy is built on{" "}
-//             <span className="font-semibold">purity, tradition, and progress</span>.
-//           </p>
-//         </motion.div>
-//       </section>
-//     </main>
-//   );
-// }
-
-
-
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-/* ============================
-   Reusable components
-   ============================ */
+export default function AboutPage() {
+  // Animation variants for smooth fade-in
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-50px" },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
 
-function HeroCard({ title, subtitle, children, img }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="bg-white/95 rounded-3xl p-8 shadow-2xl border border-white/60"
-      style={{ backdropFilter: "saturate(140%) blur(6px)" }}
-    >
-      <div className="flex flex-col md:flex-row gap-6 items-center">
-        <div className="flex-1">
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-yellow-600 tracking-wide">
-            {title}
-          </h3>
-          <div className="mt-4 text-xl md:text-2xl text-gray-800 font-semibold">{subtitle}</div>
-          <div className="mt-5 text-lg md:text-xl text-gray-700 leading-relaxed">{children}</div>
-        </div>
-
-        {img && (
-          <div className="w-full md:w-80 lg:w-96 flex-shrink-0">
-            <img src={img} alt={title} className="w-full h-full object-contain rounded-2xl drop-shadow-2xl" loading="lazy" />
-          </div>
-        )}
-      </div>
-    </motion.div>
-  );
-}
-
-function FancyStat({ value, label }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-white rounded-2xl p-6 shadow-lg border"
-    >
-      <div className="text-4xl md:text-5xl font-extrabold text-red-600">{value}</div>
-      <div className="mt-2 text-base text-gray-600">{label}</div>
-    </motion.div>
-  );
-}
-
-function Testimonial({ quote, author, img = "/images/team1.jpg" }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="bg-white rounded-2xl p-6 shadow-2xl border">
-      <div className="flex gap-4 items-start">
-        <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-          <img src={img} alt={author} className="w-full h-full object-cover" loading="lazy" />
-        </div>
-        <div>
-          <div className="text-lg text-gray-800 font-semibold">“{quote}”</div>
-          <div className="mt-2 text-sm text-gray-600">— {author}</div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-/* WhatsApp FAB (kept) */
-function WhatsAppFAB({ number = "919266328444", message = "Hi Veer Bharat! I want to know more." }) {
-  const waUrl = `https://wa.me/${number.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`;
-  return (
-    <a href={waUrl} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp"
-      className="fixed right-4 bottom-5 z-50 flex items-center gap-3 px-4 py-3 rounded-full bg-gradient-to-tr from-emerald-400 to-green-500 text-white shadow-2xl hover:scale-105 transform transition">
-      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.523 3.477A11.912 11.912 0 0012 0C5.373 0 .002 5.373 0 12c0 2.115.553 4.183 1.6 6.05L0 24l6.158-1.6A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12 0-3.2-1.244-6.199-3.477-8.523z"/><path d="M17.27 14.12c-.28-.14-1.66-.82-1.92-.92-.26-.1-.45-.14-.64.14s-.74.92-.91 1.11c-.17.19-.35.21-.64.07-1.74-.87-2.88-1.56-4.04-3.51-.3-.52.3-.48.87-1.59.1-.28 0-.48-.03-.64-.03-.18-.64-1.49-.88-2.03-.23-.54-.46-.47-.64-.48-.17-.01-.37-.02-.57-.02-.2 0-.52.07-.78.36-.26.28-1 1-1 2.44 0 1.42 1.03 2.8 1.17 3 .15.2 2.02 3.08 4.9 4.32 2.85 1.23 2.85.82 3.36.77.5-.05 1.66-.68 1.9-1.35.24-.67.24-1.25.17-1.36-.07-.11-.26-.17-.54-.3z"/></svg>
-      <span className="hidden md:inline-block font-semibold text-sm">Chat on WhatsApp</span>
-    </a>
-  );
-}
-
-/* ============================
-   Page: About (Expanded, premium)
-   ============================ */
-export default function About() {
-  return (
-    <main className="min-h-screen text-gray-900" style={{ backgroundColor: "#fef9c3" }}>
-      <WhatsAppFAB />
-
-      {/* TOP SECTION — large visible text, hero */}
-      <section className="max-w-7xl mx-auto px-6 pt-12 pb-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-yellow-600 tracking-tight leading-tight">
-              THE BELIEF
-            </h1>
-            <p className="mt-6 text-2xl md:text-2xl text-gray-800 max-w-3xl leading-relaxed font-semibold">
-              We believe in the power of people and the joy of sharing wholesome food. Veer Bharat brings premium oils and kitchen essentials made with unwavering purity and care.
-            </p>
-
-            <p className="mt-6 text-lg md:text-xl text-gray-700 leading-relaxed">
-              Every bottle and packet we craft goes through strict quality checks — ensuring every home enjoys healthful, delicious meals. Choose authenticity. Choose flavour. Choose Veer Bharat.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/products" className="inline-block px-6 py-3 rounded-2xl bg-red-600 text-white font-bold shadow-lg hover:scale-105 transition text-lg">View Products</Link>
-              <Link href="#contact" className="inline-block px-6 py-3 rounded-2xl border-2 border-red-600 text-red-600 bg-white/90 hover:bg-red-50 transition text-lg">Contact Sales</Link>
-            </div>
-          </div>
-
-          <div className="flex justify-center">
-            <div className="bg-white rounded-3xl p-6 shadow-2xl border" style={{ maxWidth: 560 }}>
-              <img src="/images/veer-products.png" alt="Veer Bharat products" className="w-full h-auto object-contain rounded-2xl" loading="lazy" />
-            </div>
+    <main className="bg-gradient-to-b from-white via-amber-50/30 to-white overflow-hidden">
+      
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={fadeIn.transition}
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight">
+                <span className="text-slate-900 block">MANY HAVE</span>
+                <span className="font-light text-slate-600 block">TRUSTED US</span>
+              </h1>
+              
+              <div className="space-y-6 text-lg md:text-xl text-slate-700 leading-relaxed">
+                <p>
+                  We stand tall in the market as one of the leading manufacturers and suppliers of a wide range of
+                  Refined Edible Oils. The entire product range is manufactured following the prescribed industrial
+                  guidelines and hence our products have always proved to be of high quality.
+                </p>
+                
+                <p>
+                  To manufacture these products, we have empowered ourselves with most modern infrastructure and a
+                  team of highly competent and experienced professionals. Our vision for the future and acumen in
+                  adapting to changing times has translated into consistent growth.
+                </p>
+                
+                <p>
+                  However, the most important attribute of our leadership is the unwavering commitment towards
+                  quality and community. "No Compromise with Quality" is our guiding philosophy, ensuring success
+                  and growth through trust and respect.
+                </p>
+              </div>
+              
+              <div className="mt-10">
+                <Link 
+                  href="/contact"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                >
+                  <span>GET IN TOUCH</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </motion.div>
+            
+            {/* Right Image with Decorative Corners */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                {/* REPLACE WITH YOUR FACTORY/COMPANY IMAGE */}
+                <Image
+                  src="/images/bg1.jpg"
+                  alt="Factory and company image"
+                  width={1400}
+                  height={1000}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+                
+                {/* Decorative Red Corners */}
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-8 border-r-8 border-red-600 rounded-tr-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-8 border-l-8 border-red-600 rounded-bl-3xl pointer-events-none"></div>
+              </div>
+            </motion.div>
+            
           </div>
         </div>
       </section>
 
-      {/* RICH PRODUCT STRIP (horizontal banner) */}
-      <section className="py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-gradient-to-r from-yellow-100/80 to-white rounded-3xl p-6 shadow-inner border border-yellow-200">
-            <div className="flex items-center gap-6 overflow-x-auto no-scrollbar py-3">
-              {/* repeat product mini cards to add length */}
-              {[
-                "/images/veer-products.png",
-                "/images/event1.jpg",
-                "/images/event2.jpg",
-                "/images/veer-products.png",
-                "/images/event1.jpg",
-                "/images/event2.jpg",
-              ].map((src, i) => (
-                <div key={i} className="flex-shrink-0 w-56 md:w-72 bg-white rounded-2xl p-4 shadow-lg border">
-                  <img src={src} alt={`prod-${i}`} className="w-full h-40 object-contain rounded-lg" loading="lazy" />
-                  <div className="mt-3 text-lg font-semibold text-gray-800">Veer Bharat Range</div>
-                  <div className="text-sm text-gray-600 mt-1">Oil • Rice • Noodles • Snacks</div>
+      {/* ===== MISSION SECTION ===== */}
+      <section className="relative py-20 md:py-28 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={fadeIn.transition}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+                <span className="text-slate-900">OUR</span>{" "}
+                <span className="font-light text-slate-600">MISSION</span>
+              </h2>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-800 mb-6 tracking-wide">
+                PERFECT QUALITY & PURITY INDIA DESIRES
+              </h3>
+              
+              <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-8">
+                To be benchmark in purity and perfection, achieve leadership position in the Indian market
+                and to become the preferred Indian edible oil name globally.
+              </p>
+              
+              <ul className="space-y-4 text-lg text-slate-700">
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Establishing "win-win relations" with clients, contractors, local communities and employees</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Responsibility – for the company and the environment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Innovative character and open-mindedness</span>
+                </li>
+              </ul>
+            </motion.div>
+            
+            {/* Right Image with Decorative Corners */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.2 }}
+              className="relative order-first lg:order-last"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                {/* REPLACE WITH YOUR MISSION/FACILITY IMAGE */}
+                <Image
+                  src="/images/bg2.jpeg"
+                  alt="Facility and mission image"
+                  width={1400}
+                  height={1000}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                
+                {/* Decorative Red Corners */}
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-8 border-r-8 border-red-600 rounded-tr-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-8 border-l-8 border-red-600 rounded-bl-3xl pointer-events-none"></div>
+              </div>
+            </motion.div>
+            
+          </div>
+        </div>
+      </section>
+
+      {/* ===== VISION SECTION ===== */}
+      <section className="relative py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Image with Decorative Corners */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={fadeIn.transition}
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                {/* REPLACE WITH YOUR VISION/PRODUCTION IMAGE */}
+                <Image
+                  src="/images/slide1.jpg"
+                  alt="Production and vision image"
+                  width={1400}
+                  height={1000}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                
+                {/* Decorative Red Corners */}
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-8 border-r-8 border-red-600 rounded-tr-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-8 border-l-8 border-red-600 rounded-bl-3xl pointer-events-none"></div>
+              </div>
+            </motion.div>
+            
+            {/* Right Content */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.2 }}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+                <span className="text-slate-900">OUR</span>{" "}
+                <span className="font-light text-slate-600">VISION</span>
+              </h2>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-800 mb-6 tracking-wide">
+                MANY HAVE TRUSTED US
+              </h3>
+              
+              <div className="space-y-6 text-lg md:text-xl text-slate-700 leading-relaxed">
+                <p>
+                  To provide best grade Food Oils with perfect balance of quality and taste for every Indian
+                  household. Our commitment extends beyond just products – we aim to build lasting relationships
+                  based on trust and consistency.
+                </p>
+                
+                <p>
+                  Our vision encompasses creating a healthier India through superior quality edible oils that
+                  combine traditional values with modern technology. We strive to be the brand that families
+                  trust for generations to come.
+                </p>
+                
+                <p className="text-slate-600 leading-relaxed">
+                  Strategic thinker driving innovation and market expansion
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Leadership Story */}
+          <motion.div 
+            initial={fadeIn.initial}
+            whileInView={fadeIn.whileInView}
+            viewport={fadeIn.viewport}
+            transition={{ ...fadeIn.transition, delay: 0.3 }}
+            className="mt-16 bg-white rounded-3xl p-8 md:p-12 shadow-xl"
+          >
+            <p className="text-lg md:text-xl text-slate-700 leading-relaxed text-center max-w-5xl mx-auto">
+              Our Father, <span className="font-bold text-amber-800">BUKKA LAXMAIAH</span> started groundnut oil mill in 1979 at Nalgonda.
+              With his successful experience and inspiration, we (BUKKA CHANDRA SHEKAR and BUKKA SRINIVASU) entered into
+              business and understood the marketing strategies. We started oil packing units at Kakinada in 2000 and at
+              Nellore in 2008, building a legacy of trust and quality.
+            </p>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ===== AIM SECTION ===== */}
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-amber-50 to-orange-50/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={fadeIn.transition}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+                <span className="text-slate-900">OUR</span>{" "}
+                <span className="font-light text-slate-600">AIM</span>
+              </h2>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-red-700 mb-6 tracking-wide uppercase">
+                Most Preferred & Trusted Brand for Edible Oils
+              </h3>
+              
+              <div className="space-y-6 text-lg md:text-xl text-slate-700 leading-relaxed">
+                <p>
+                  Consistently enhance our understanding of market dynamics and changing customer needs so as to
+                  offer finest quality products that at all times meet our customers' expectations and the ever
+                  changing demands of the market place.
+                </p>
+                
+                <p>
+                  Provide a high level of service to our customers with minimum cause for complaint. Maintain a
+                  healthy & constructive work environment that enables personnel to produce optimal output.
+                </p>
+                
+                <div className="grid sm:grid-cols-2 gap-4 mt-8">
+                  <div className="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-red-600">
+                    <div className="text-3xl font-black text-red-600 mb-2">100%</div>
+                    <div className="text-sm font-semibold text-slate-600">Quality Assurance</div>
+                  </div>
+                  <div className="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-amber-600">
+                    <div className="text-3xl font-black text-amber-600 mb-2">24/7</div>
+                    <div className="text-sm font-semibold text-slate-600">Customer Support</div>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            </motion.div>
+            
+            {/* Right Image with Decorative Corners */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.2 }}
+              className="relative order-first lg:order-last"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                {/* REPLACE WITH YOUR WAREHOUSE/STORAGE IMAGE */}
+                <Image
+                  src="/images/slide2.jpg"
+                  alt="Warehouse and storage image"
+                  width={1400}
+                  height={1000}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                
+                {/* Decorative Red Corners */}
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-8 border-r-8 border-red-600 rounded-tr-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-8 border-l-8 border-red-600 rounded-bl-3xl pointer-events-none"></div>
+              </div>
+            </motion.div>
+            
           </div>
         </div>
       </section>
 
-      {/* STATS (bigger and premium) */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <FancyStat value="70–80 Cr" label="Turnover (est.)" />
-          <FancyStat value="100%" label="Purity Promise" />
-          <FancyStat value="Pan-India" label="Distribution" />
+      {/* ===== STRENGTH SECTION ===== */}
+      <section className="relative py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Image with Decorative Corners */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={fadeIn.transition}
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                {/* REPLACE WITH YOUR QUALITY CONTROL/LAB IMAGE */}
+                <Image
+                  src="/images/slide3.jpg"
+                  alt="Quality control and lab image"
+                  width={1400}
+                  height={1000}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                
+                {/* Decorative Red Corners */}
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-8 border-r-8 border-red-600 rounded-tr-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-8 border-l-8 border-red-600 rounded-bl-3xl pointer-events-none"></div>
+              </div>
+            </motion.div>
+            
+            {/* Right Content */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.2 }}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+                <span className="text-slate-900">OUR</span>{" "}
+                <span className="font-light text-slate-600">STRENGTH</span>
+              </h2>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-800 mb-6 tracking-wide uppercase">
+                We Believe in Quality
+              </h3>
+              
+              <div className="space-y-6 text-lg md:text-xl text-slate-700 leading-relaxed">
+                <p>
+                  The processes and facilities at our plant match the highest standards. The Crude Edible oils
+                  ensures that only the purest product is dispatched from our facility. The Refining is undertaken
+                  by world class process through which flows out the purest form of cooking oil.
+                </p>
+                
+                <p>
+                  Our oils beat the best known brands on transparency tests. We are also one of the selected oil
+                  players in the country that have been granted certification. The company is now in a position to
+                  develop many new products and cater to the evolving consumer needs.
+                </p>
+                
+                <p>
+                  Whatever the product and whatever be the process, at our company the Purity & Hygiene factor is
+                  always the topmost priority. At our technologically advanced refinery plant, all processes are
+                  designed to be automated.
+                </p>
+                
+                <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-6 border-l-4 border-red-600 mt-8">
+                  <p className="text-slate-800 font-semibold">
+                    Right from the un-loading of the crude oil from the ship to the filling and packaging of oil
+                    in various pack-sizes, the product remains untouched by human hand.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+            
+          </div>
         </div>
       </section>
 
-      {/* DETAILED LEGACY (larger text + image left) */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <img src="/images/veer-products.png" alt="Veer legacy" className="w-full rounded-3xl object-contain shadow-2xl border" loading="lazy" />
+      {/* ===== QUALITY MANAGEMENT SECTION ===== */}
+      <section className="relative py-20 md:py-28 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Content */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={fadeIn.transition}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+                <span className="text-slate-900">QUALITY</span>{" "}
+                <span className="font-light text-slate-600">MANAGEMENT</span>
+              </h2>
+              
+              <h3 className="text-2xl md:text-3xl font-bold text-red-700 mb-6 tracking-wide uppercase">
+                Quality of the Highest Level!
+              </h3>
+              
+              <div className="space-y-6 text-lg md:text-xl text-slate-700 leading-relaxed">
+                <p>
+                  We are committed to total customer satisfaction, and compliance with regulatory bodies at all
+                  times and at maximum effectiveness. Our integrated quality and environmental management system
+                  follows international standards.
+                </p>
+                
+                <p>
+                  As a result, the established Edible Oil Brands are today enjoying Market Leadership in a vast
+                  market and region. The unique taste preference developed by the company's products ensures an
+                  unflinching consumer loyalty.
+                </p>
+                
+                {/* Quality Certifications */}
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-amber-100 hover:border-amber-300 transition-colors">
+                    <svg className="w-12 h-12 mx-auto mb-3 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div className="font-bold text-slate-800">ISO 9001</div>
+                    <div className="text-sm text-slate-600">Certified</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-red-100 hover:border-red-300 transition-colors">
+                    <svg className="w-12 h-12 mx-auto mb-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    <div className="font-bold text-slate-800">FSSAI</div>
+                    <div className="text-sm text-slate-600">Approved</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-green-100 hover:border-green-300 transition-colors">
+                    <svg className="w-12 h-12 mx-auto mb-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
+                    <div className="font-bold text-slate-800">Lab Tested</div>
+                    <div className="text-sm text-slate-600">Every Batch</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-6 shadow-lg text-center border-2 border-blue-100 hover:border-blue-300 transition-colors">
+                    <svg className="w-12 h-12 mx-auto mb-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                    <div className="font-bold text-slate-800">Hygienic</div>
+                    <div className="text-sm text-slate-600">Packaging</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Right Image with Decorative Corners */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.2 }}
+              className="relative order-first lg:order-last"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                {/* REPLACE WITH YOUR QUALITY/TESTING IMAGE */}
+                <Image
+                  src="/images/purity.jpg"
+                  alt="Quality testing image"
+                  width={1400}
+                  height={1000}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                
+                {/* Decorative Red Corners */}
+                <div className="absolute top-0 right-0 w-24 h-24 border-t-8 border-r-8 border-red-600 rounded-tr-3xl pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 border-b-8 border-l-8 border-red-600 rounded-bl-3xl pointer-events-none"></div>
+              </div>
+            </motion.div>
+            
           </div>
-          <div className="order-1 md:order-2">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-yellow-600 tracking-tight">THE LEGACY</h2>
-            <p className="mt-6 text-2xl text-gray-800 font-semibold leading-relaxed max-w-xl">
-              Our roots are built on trust — Veer Bharat started with a simple mission: bring affordable, high-quality food essentials to every Indian kitchen. Today we craft oils, rice, pastas and ready-to-cook items using modern facilities and time-honored care.
+        </div>
+      </section>
+
+      {/* ===== MANAGEMENT TEAM SECTION ===== */}
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-slate-50 to-amber-50/20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          
+          <motion.div
+            initial={fadeIn.initial}
+            whileInView={fadeIn.whileInView}
+            viewport={fadeIn.viewport}
+            transition={fadeIn.transition}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+              <span className="text-slate-900">OUR</span>{" "}
+              <span className="font-light text-slate-600">MANAGEMENT</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Led by visionary leaders committed to excellence and innovation
             </p>
-            <p className="mt-6 text-lg text-gray-700 leading-relaxed max-w-xl">
-              From small neighbourhood stores to pan-India shelves, our products are lab-tested, packed hygienically and delivered with love. This is the legacy that continues to grow — one happy family at a time.
+          </motion.div>
+
+          {/* Team Grid */}
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            
+            {/* Team Member 1 */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={fadeIn.transition}
+              className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group"
+            >
+              <div className="relative h-80 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                {/* REPLACE WITH CHAIRMAN IMAGE */}
+                <Image
+                  src="/images/TahirBhai.jpeg"
+                  alt="Chairman & Founder photo"
+                  width={800}
+                  height={1000}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="p-8 text-center">
+                <div className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">
+                  Chairman & Founder
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 mb-3">
+                  Mr. Bukka Laxmaiah
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Visionary leader with decades of experience in the edible oil industry
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 2 */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.1 }}
+              className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group"
+            >
+              <div className="relative h-80 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                {/* REPLACE WITH MANAGING DIRECTOR IMAGE */}
+                <Image
+                  src="/images/team2.jpg"
+                  alt="Managing Director photo"
+                  width={800}
+                  height={1000}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="p-8 text-center">
+                <div className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">
+                  Managing Director
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 mb-3">
+                  Mr. Bukka Chandrashekar
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Strategic thinker driving innovation and strong leadership across all operational areas
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Team Member 3 */}
+            <motion.div
+              initial={fadeIn.initial}
+              whileInView={fadeIn.whileInView}
+              viewport={fadeIn.viewport}
+              transition={{ ...fadeIn.transition, delay: 0.2 }}
+              className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group"
+            >
+              <div className="relative h-80 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
+                {/* REPLACE WITH EXECUTIVE DIRECTOR IMAGE */}
+                <Image
+                  src="/images/Unknown.jpeg"
+                  alt="Executive Director photo"
+                  width={800}
+                  height={1000}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="p-8 text-center">
+                <div className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">
+                  Executive Director
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 mb-3">
+                  Mr. Bukka Srinivas
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Expert in achieving excellence through precision, quality, and operational efficiency
+                </p>
+              </div>
+            </motion.div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ===== CALL TO ACTION SECTION ===== */}
+      <section className="relative py-20 md:py-28 bg-gradient-to-br from-red-600 to-orange-600 text-white overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
+          <motion.div
+            initial={fadeIn.initial}
+            whileInView={fadeIn.whileInView}
+            viewport={fadeIn.viewport}
+            transition={fadeIn.transition}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+              Let's Build Something Great Together
+            </h2>
+            
+            <p className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed opacity-90">
+              Whether you're looking to partner with us, distribute our products, or simply learn more about
+              what we do – we'd love to hear from you.
             </p>
 
-            <div className="mt-8 flex gap-4">
-              <Link href="/company-profile.pdf" className="inline-block px-6 py-3 rounded-2xl border border-gray-300 text-gray-800 bg-white font-semibold hover:shadow-md transition">Company Profile</Link>
-              <Link href="/contact" className="inline-block px-6 py-3 rounded-2xl bg-red-600 text-white font-semibold shadow-lg hover:scale-105 transition">Meet Sales</Link>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Link 
+                href="/contact"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-white text-red-600 font-bold text-lg rounded-full shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>GET IN TOUCH</span>
+              </Link>
+
+              <Link 
+                href="/products"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border-2 border-white text-white font-bold text-lg rounded-full hover:bg-white hover:text-red-600 transition-all duration-300"
+              >
+                <span>VIEW PRODUCTS</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* TEAM & TESTIMONIALS (adds scroll length) */}
-      <section className="max-w-7xl mx-auto px-6 py-12">
-        <h3 className="text-3xl font-extrabold text-gray-800">Our Field Team & Customers</h3>
-        <div className="mt-6 grid md:grid-cols-3 gap-6">
-          <Testimonial quote="Their oil tastes pure and cooks beautifully." author="R. Sharma, Home Chef" img="/images/team1.jpg" />
-          <Testimonial quote="Great distribution, always on time with samples." author="Store Manager — Delhi" img="/images/team2.jpg" />
-          <Testimonial quote="Packaging is neat and product stays fresh." author="Mrs. Kaur" img="/images/team3.jpg" />
-        </div>
-      </section>
+            {/* Contact Info */}
+            <div className="mt-16 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <svg className="w-8 h-8 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <div className="font-bold mb-1">Call Us</div>
+                <div className="text-sm opacity-80">+91 6205771930</div>
+              </div>
 
-      {/* CERTIFICATIONS & FAQ (more length) */}
-      <section className="max-w-7xl mx-auto px-6 py-12 bg-white/60 rounded-2xl border shadow-inner">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          <div>
-            <h4 className="text-2xl font-bold text-gray-800">Certifications</h4>
-            <div className="mt-4 grid grid-cols-2 gap-4">
-              <div className="p-4 bg-white rounded-xl shadow">ISO 9001</div>
-              <div className="p-4 bg-white rounded-xl shadow">FSSAI Approved</div>
-              <div className="p-4 bg-white rounded-xl shadow">Lab Tested</div>
-              <div className="p-4 bg-white rounded-xl shadow">Hygienic Packaging</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <svg className="w-8 h-8 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <div className="font-bold mb-1">Email Us</div>
+                <div className="text-sm opacity-80">info@veerbharat.com</div>
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <svg className="w-8 h-8 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div className="font-bold mb-1">Visit Us</div>
+                <div className="text-sm opacity-80">Pan India Presence</div>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <h4 className="text-2xl font-bold text-gray-800">FAQ</h4>
-            <div className="mt-4 space-y-3">
-              <details className="p-4 bg-white rounded-xl shadow">
-                <summary className="font-semibold cursor-pointer">Where are your products manufactured?</summary>
-                <div className="mt-2 text-sm text-gray-600">Manufactured at modern facilities across India following strict quality norms.</div>
-              </details>
-              <details className="p-4 bg-white rounded-xl shadow">
-                <summary className="font-semibold cursor-pointer">Do you offer bulk distribution?</summary>
-                <div className="mt-2 text-sm text-gray-600">Yes — we partner with distributors and retailers nationwide. Contact sales for details.</div>
-              </details>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* STORIES / BLOG PREVIEW (adds content) */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <h3 className="text-3xl font-extrabold text-gray-800">Stories from the Field</h3>
-        <div className="mt-6 grid lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-2xl p-6 shadow-2xl border">
-            <img src="/images/event1.jpg" alt="story" className="w-full rounded-lg mb-4 object-cover h-56" loading="lazy" />
-            <h5 className="text-2xl font-bold text-gray-800">Local markets, real reactions</h5>
-            <p className="mt-3 text-gray-700">Our sampling teams bring live tasting and sincere feedback — building trust one household at a time.</p>
-          </div>
-
-          <div className="bg-white rounded-2xl p-6 shadow-2xl border">
-            <img src="/images/event2.jpg" alt="story2" className="w-full rounded-lg mb-4 object-cover h-56" loading="lazy" />
-            <h5 className="text-2xl font-bold text-gray-800">From pantry to plate</h5>
-            <p className="mt-3 text-gray-700">Our evolution into cooking essentials is guided by families who tell us what matters most — taste and safety.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA & FOOTER */}
-      <section id="contact" className="py-12">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <div className="text-2xl font-bold">Join the Veer Bharat journey</div>
-            <div className="text-sm text-gray-700 mt-1">For distribution, partnerships, or product trials — get in touch.</div>
-          </div>
-          <div className="flex gap-3">
-            <Link href="/contact" className="px-5 py-3 rounded-2xl bg-red-600 text-white font-semibold hover:scale-105 transition">Contact Us</Link>
-            <Link href="/company-profile.pdf" className="px-5 py-3 rounded-2xl border border-gray-300 text-gray-800 hover:bg-gray-50 transition">Company Profile</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* extra bottom spacer to increase scroll and luxe feel */}
-      <div className="h-24" />
     </main>
   );
 }
+
+/*
+===========================================
+IMAGE ASSETS REQUIRED
+===========================================
+
+Place the following images in your /public/images/about/ directory:
+
+1. hero-factory.jpg
+   - Wide shot of your factory/manufacturing facility
+   - Recommended size: 1400x1000px
+   - Use: Hero section - company overview
+
+2. mission-facility.jpg
+   - Modern facility/production line image
+   - Recommended size: 1400x1000px
+   - Use: Mission section
+
+3. vision-production.jpg
+   - Production/manufacturing process image
+   - Recommended size: 1400x1000px
+   - Use: Vision section
+
+4. aim-warehouse.jpg
+   - Warehouse/storage/distribution center
+   - Recommended size: 1400x1000px
+   - Use: Aim section
+
+5. strength-quality.jpg
+   - Quality control lab or testing facility
+   - Recommended size: 1400x1000px
+   - Use: Strength section
+
+6. quality-testing.jpg
+   - Laboratory testing or quality inspection
+   - Recommended size: 1400x1000px
+   - Use: Quality Management section
+
+7. team-chairman.jpg
+   - Professional portrait of Chairman
+   - Recommended size: 800x1000px (portrait)
+   - Use: Management team section
+
+8. team-md.jpg
+   - Professional portrait of Managing Director
+   - Recommended size: 800x1000px (portrait)
+   - Use: Management team section
+
+9. team-ed.jpg
+   - Professional portrait of Executive Director
+   - Recommended size: 800x1000px (portrait)
+   - Use: Management team section
+
+NOTES:
+- Optimize images (WebP/AVIF recommended). If you use `next export`, set `images.unoptimized = true` in next.config.js.
+- If you want automatic optimization and responsive sizes, convert these <Image> uses to Next.js Image component props with `sizes` and provide remote domains in next.config.js.
+- Install framer-motion if not present: `npm i framer-motion`
+===========================================
+*/
