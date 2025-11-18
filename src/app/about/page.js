@@ -77,7 +77,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 {/* REPLACE WITH YOUR FACTORY/COMPANY IMAGE */}
                 <Image
-                  src="/images/bg1.jpg"
+                  src="/images/bg11.jpg"
                   alt="Factory and company image"
                   width={1400}
                   height={1000}
@@ -154,7 +154,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 {/* REPLACE WITH YOUR MISSION/FACILITY IMAGE */}
                 <Image
-                  src="/images/bg2.jpeg"
+                  src="/images/bg22.jpeg"
                   alt="Facility and mission image"
                   width={1400}
                   height={1000}
@@ -188,7 +188,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 {/* REPLACE WITH YOUR VISION/PRODUCTION IMAGE */}
                 <Image
-                  src="/images/slide1.jpg"
+                  src="/images/slide11.jpg"
                   alt="Production and vision image"
                   width={1400}
                   height={1000}
@@ -248,10 +248,10 @@ export default function AboutPage() {
             className="mt-16 bg-white rounded-3xl p-8 md:p-12 shadow-xl"
           >
             <p className="text-lg md:text-xl text-slate-700 leading-relaxed text-center max-w-5xl mx-auto">
-              Our Father, <span className="font-bold text-amber-800">BUKKA LAXMAIAH</span> started groundnut oil mill in 1979 at Nalgonda.
-              With his successful experience and inspiration, we (BUKKA CHANDRA SHEKAR and BUKKA SRINIVASU) entered into
-              business and understood the marketing strategies. We started oil packing units at Kakinada in 2000 and at
-              Nellore in 2008, building a legacy of trust and quality.
+              Our Father, <span className="font-bold text-amber-800">NK Mishra</span> started groundnut oil mill in 1979 at Bihar.
+              With his successful experience and inspiration, we (Nk mishra ) entered into
+              business and understood the marketing strategies. We started oil packing units at UP in 2000 and at
+              Up in 2008, building a legacy of trust and quality.
             </p>
           </motion.div>
 
@@ -315,7 +315,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 {/* REPLACE WITH YOUR WAREHOUSE/STORAGE IMAGE */}
                 <Image
-                  src="/images/slide2.jpg"
+                  src="/images/slide22.jpg"
                   alt="Warehouse and storage image"
                   width={1400}
                   height={1000}
@@ -349,7 +349,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 {/* REPLACE WITH YOUR QUALITY CONTROL/LAB IMAGE */}
                 <Image
-                  src="/images/slide3.jpg"
+                  src="/images/slide33.jpg"
                   alt="Quality control and lab image"
                   width={1400}
                   height={1000}
@@ -490,7 +490,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 {/* REPLACE WITH YOUR QUALITY/TESTING IMAGE */}
                 <Image
-                  src="/images/purity.jpg"
+                  src="/images/purityy.jpg"
                   alt="Quality testing image"
                   width={1400}
                   height={1000}
@@ -542,7 +542,7 @@ export default function AboutPage() {
               <div className="relative h-80 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
                 {/* REPLACE WITH CHAIRMAN IMAGE */}
                 <Image
-                  src="/images/TahirBhai.jpeg"
+                  src="/images/Unknown.jpeg"
                   alt="Chairman & Founder photo"
                   width={800}
                   height={1000}
@@ -558,10 +558,10 @@ export default function AboutPage() {
                   Chairman & Founder
                 </div>
                 <h3 className="text-2xl font-black text-slate-900 mb-3">
-                  Mr. Bukka Laxmaiah
+                  Mr.Nitesh Kumar 
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Visionary leader with decades of experience in the edible oil industry
+                  Managing Director with a passion for quality and customer satisfaction.
                 </p>
               </div>
             </motion.div>
@@ -590,10 +590,10 @@ export default function AboutPage() {
               
               <div className="p-8 text-center">
                 <div className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">
-                  Managing Director
+                  E-commerce Head
                 </div>
                 <h3 className="text-2xl font-black text-slate-900 mb-3">
-                  Mr. Bukka Chandrashekar
+                  Mr. Laibu 
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
                   Strategic thinker driving innovation and strong leadership across all operational areas
@@ -612,7 +612,7 @@ export default function AboutPage() {
               <div className="relative h-80 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
                 {/* REPLACE WITH EXECUTIVE DIRECTOR IMAGE */}
                 <Image
-                  src="/images/Unknown.jpeg"
+                  src="/images/TahirBhai.jpeg"
                   alt="Executive Director photo"
                   width={800}
                   height={1000}
@@ -625,13 +625,13 @@ export default function AboutPage() {
               
               <div className="p-8 text-center">
                 <div className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">
-                  Executive Director
+                   SEO Expert
                 </div>
                 <h3 className="text-2xl font-black text-slate-900 mb-3">
-                  Mr. Bukka Srinivas
+                  Mr.Tahir
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Expert in achieving excellence through precision, quality, and operational efficiency
+                  Visionary leader with decades of experience in the edible oil industry
                 </p>
               </div>
             </motion.div>
@@ -694,7 +694,7 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 <div className="font-bold mb-1">Call Us</div>
-                <div className="text-sm opacity-80">+91 6205771930</div>
+                <div className="text-sm opacity-80">+91 9560413551</div>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">

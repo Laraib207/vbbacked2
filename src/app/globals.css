@@ -51,7 +51,7 @@ body {
   animation: splash-shimmer 1s cubic-bezier(.2,.9,.2,1) forwards;
   mix-blend-mode: screen;
   opacity: 0.95;
-}
+} 
 
 /* shimmer animation (gold sweep) */
 @keyframes splash-shimmer {
