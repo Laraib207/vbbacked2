@@ -450,6 +450,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+// Add to Cart function
+const addToCart = (product) => {
+  let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const idx = cart.findIndex(i => i.productId === product.slug);
+  if (idx > -1) cart[idx].qty += 1;
+  else cart.push({ productId: product.slug, qty: 1, price: parseFloat(product.price.replace(/,/g, '')), title: product.name });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Added to cart");
+};
+
 // PALM OIL VARIANTS DATA
 const palmVariants = [
   {

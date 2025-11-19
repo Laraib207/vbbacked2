@@ -1079,6 +1079,11 @@ const playfair = Playfair_Display({
   weight: ["700", "800"],
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function Home() {
   // Add Google verification meta tag on component mount
   useEffect(() => {

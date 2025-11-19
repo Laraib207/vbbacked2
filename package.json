@@ -8,7 +8,7 @@
     "export": "next export"
   },
   "dependencies": {
-    "@prisma/client": "^6.15.0",
+    "@prisma/client": "^6.19.0",
     "autoprefixer": "^10.4.20",
     "dotenv": "^17.2.3",
     "framer-motion": "^11.18.2",
@@ -23,8 +23,5 @@
     "react-slick": "^0.31.0",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^3.4.7"
-  },
-  "devDependencies": {
-    "prisma": "^6.15.0"
   }
 }

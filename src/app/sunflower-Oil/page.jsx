@@ -381,7 +381,7 @@ export default function SunflowerOilPage() {
                 </div>
 
                 <div className="mt-5 flex flex-col xs:flex-row gap-2 xs:gap-3">
-                  <button className="flex-1 text-center rounded-full px-4 py-2.5 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-base md:text-lg">
+                  <button onClick={() => addToCart(product)} className="flex-1 text-center rounded-full px-4 py-2.5 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-base md:text-lg">
                     🛒 Add to Cart
                   </button>
                   <button

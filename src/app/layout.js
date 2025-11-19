@@ -1,10 +1,14 @@
 export const metadata = {
-  viewport: 'width=device-width, initial-scale=1',
   title: "Veer Bharat | Best Soyabean Oil | Kachi Ghani Oil",
   description: "Veer Bharat Premium is the best Soyabean Oil in Ghaziabad. Trusted Indian brand Kachi Ghani Oil quality cooking oil, rice bran oil in Noida. Call 9266328444",
   other: {
     'google-site-verification': 'r98v6O5kAtTe-6BdgRB11PQgQTopFn7x464rMPuWkIQ',
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 import "./globals.css";
