@@ -253,3 +253,134 @@ export default function ProductDetail({ params }) {
     </main>
   );
 }
+
+
+
+
+// "use client";
+// import { notFound } from "next/navigation";
+// import Image from "next/image";
+// import Link from "next/link";
+// import { useState, useEffect } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
+
+// /* ------------------------------------------------------------------ */
+// /* 1.  Same Product Arsenal (copy from page.js)                       */
+// /* ------------------------------------------------------------------ */
+// const products = [
+//   { slug: "soyabean-oil",   name: "Soyabean Oil",        size: "500 ml - 15 L",  price: 195,  short: "Light, neutral & nutrition-forward — lets ingredients shine.",         image: "/images/soyabean.jpg",     video: "/videos/soya.mp4",   badge: "Chef’s Lite Choice", },
+//   { slug: "mustard-oil",    name: "Kachi Ghani Mustard", size: "200 ml - 15 L",  price: 220,  short: "Royal pungency, cold-pressed in artisan wooden ghanis.",              image: "/images/mustard.jpg",      video: "/videos/mustard.mp4",badge: "Heritage Gold", },
+//   { slug: "rice-bran-oil",  name: "Rice Bran Oil",       size: "500 ml - 5 L",   price: 210,  short: "Heart-healthy γ-oryzanol, velvet finish for gourmet frying.",         image: "/images/ricebran.jpg",     video: "/videos/rb.mp4",     badge: "Gourmet Fry", },
+//   { slug: "palm-oil",       name: "Palm Oil",            size: "1 L - 15 L",     price: 140,  short: "Buttery texture, natural β-carotene glow for traditional recipes.",   image: "/images/palm.jpg",         video: "/videos/palm.mp4",   badge: "Tradition Glow", },
+//   { slug: "sunflower-oil",  name: "Sunflower Oil",       size: "500 ml - 15 L",  price: 185,  short: "Crystal-light, high smoke-point — everyday brilliance.",               image: "/images/sunflower.jpg",    video: "/videos/sun.mp4",    badge: "Everyday Brilliant", },
+//   { slug: "groundnut-oil",  name: "Groundnut Oil",       size: "500 ml - 5 L",   price: 240,  short: "Rich nutty aroma, perfect for tempering & salad dressings.",          image: "/images/groundnut.jpg",    video: "/videos/gn.mp4",     badge: "Nutty Luxe", },
+//   { slug: "coconut-oil",    name: "Coconut Oil",         size: "200 ml - 5 L",   price: 280,  short: "Tropical velvet, cold-pressed within 48 hrs of harvest.",             image: "/images/coconut.jpg",      video: "/videos/coco.mp4",   badge: "Tropics in Bottle", },
+//   { slug: "sesame-oil",     name: "Sesame Oil",          size: "200 ml - 2 L",   price: 320,  short: "Velvet amber goodness — elevates Asian & continental plates.",        image: "/images/sesame.jpg",       video: "/videos/sesame.mp4", badge: "Continental Velvet", },
+//   { slug: "canola-oil",     name: "Canola Oil",          size: "500 ml - 5 L",   price: 225,  short: "Lowest saturated fat, neutral flavour — modern healthy living.",      image: "/images/canola.jpg",       video: "/videos/canola.mp4", badge: "Modern Lean", },
+//   { slug: "olive-oil",      name: "Olive Oil",           size: "250 ml - 2 L",   price: 495,  short: "Mediterranean luxury, monocultivar harvest, grassy pepper finish.",   image: "/images/olive.jpg",        video: "/videos/olive.mp4",  badge: "Mediterranean Luxe", },
+//   { slug: "brand-rice",     name: "Royal Basmati Rice",  size: "1 kg - 25 kg",   price: 180,  short: "Aged 24 months, extra-long pearl grains — crown of every table.",     image: "/images/rice.jpg",         video: "/videos/rice.mp4",   badge: "Aged Pearl", },
+// ];
+
+// /* ------------------------------------------------------------------ */
+// /* 2.  Cinematic Video Modal                                         */
+// /* ------------------------------------------------------------------ */
+// function VideoModal({ src, name, close }) {
+//   useEffect(() => {
+//     const onKey = (e) => e.key === "Escape" && close();
+//     window.addEventListener("keydown", onKey);
+//     return () => window.removeEventListener("keydown", onKey);
+//   }, [close]);
+//   return (
+//     <AnimatePresence>
+//       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur" onClick={close}>
+//         <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="relative w-full max-w-5xl rounded-2xl overflow-hidden shadow-2xl bg-black" onClick={(e) => e.stopPropagation()}>
+//           <button onClick={close} className="absolute top-6 right-6 z-20 rounded-full bg-white/90 px-4 py-2 text-black font-bold">✕</button>
+//           <video src={src} controls autoPlay className="w-full h-[70vh] object-cover" />
+//           <div className="p-6 bg-gradient-to-t from-black to-transparent text-white">
+//             <div className="font-bold text-2xl">{name}</div>
+//             <div className="text-sm opacity-80">Veer Bharat — Premium Oils & Grains</div>
+//           </div>
+//         </motion.div>
+//       </motion.div>
+//     </AnimatePresence>
+//   );
+// }
+
+// /* ------------------------------------------------------------------ */
+// /* 3.  Dynamic Page                                                  */
+// /* ------------------------------------------------------------------ */
+// export default function ProductDetail({ params }) {
+//   const product = products.find((p) => p.slug === params.slug);
+//   if (!product) return notFound();
+
+//   const [videoOpen, setVideoOpen] = useState(false);
+//   const highlights = ["Cold-pressed", "Lab-certified", "Zero preservatives", "Fair-trade sourced"];
+//   const gallery = [product.image, product.image, product.image]; // mock gallery
+
+//   return (
+//     <main className="min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-100 dark:from-gray-900 dark:via-black dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-500">
+//       {/* HERO Billboard */}
+//       <section className="relative h-screen flex items-center justify-center overflow-hidden text-white">
+//         <div className="absolute inset-0 z-0">
+//           <img src={product.image} alt={product.name} className="w-full h-full object-cover scale-110 blur-sm brightness-50" />
+//           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+//         </div>
+//         <motion.div initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="relative z-10 text-center max-w-4xl px-4">
+//           <div className="mb-4 inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-sm font-semibold tracking-widest">{product.badge}</div>
+//           <h1 className="text-5xl md:text-8xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200">{product.name}</h1>
+//           <p className="mt-4 text-lg md:text-2xl text-gray-200">{product.short}</p>
+//           <div className="mt-8 flex items-center justify-center gap-6">
+//             <span className="text-4xl md:text-6xl font-black text-yellow-400">₹{product.price}</span>
+//             <span className="text-xl text-gray-400">({product.size})</span>
+//           </div>
+//           <div className="mt-8 flex gap-4 justify-center">
+//             <button onClick={() => addToCart(product)} className="rounded-full px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold shadow-2xl hover:scale-105 transition">Add to Cart</button>
+//             <button onClick={() => setVideoOpen(true)} className="rounded-full px-8 py-4 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition">▶ Watch Story</button>
+//           </div>
+//         </motion.div>
+//       </section>
+
+//       {/* INFO BLOCKS */}
+//       <section className="max-w-6xl mx-auto px-4 py-16 grid gap-10 md:grid-cols-2 items-start">
+//         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="bg-white/90 dark:bg-gray-800/50 backdrop-blur rounded-3xl shadow-xl p-6 md:p-8 border border-amber-200 dark:border-amber-400/20">
+//           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">About {product.name}</h2>
+//           <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{product.short}</p>
+//           <div className="mt-6 flex flex-wrap gap-2">
+//             {highlights.map((h) => (
+//               <span key={h} className="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300 text-sm font-semibold border border-amber-300 dark:border-amber-500/30">{h}</span>
+//             ))}
+//           </div>
+//         </motion.div>
+
+//         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="bg-white/90 dark:bg-gray-800/50 backdrop-blur rounded-3xl shadow-xl p-6 md:p-8 border border-amber-200 dark:border-amber-400/20">
+//           <h3 className="text-2xl font-extrabold mb-4">Available Sizes</h3>
+//           <div className="flex flex-wrap gap-3">
+//             {product.size.split(" - ").map((s) => (
+//               <span key={s} className="px-4 py-2 rounded-full bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/30 dark:to-yellow-900/30 text-amber-800 dark:text-amber-300 font-bold border border-amber-300 dark:border-amber-500/30">{s}</span>
+//             ))}
+//           </div>
+//           <div className="mt-6 flex gap-3">
+//             <button onClick={() => addToCart(product)} className="rounded-full px-6 py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-black font-bold shadow-lg hover:scale-105 transition">Add to Cart</button>
+//             <Link href="/products" className="rounded-full px-6 py-3 border-2 border-amber-500 text-amber-700 dark:text-amber-300 font-bold hover:bg-amber-50 dark:hover:bg-amber-900/30 transition">← All Products</Link>
+//           </div>
+//         </motion.div>
+//       </section>
+
+//       {/* GALLERY */}
+//       <section className="max-w-6xl mx-auto px-4 py-12">
+//         <h3 className="text-3xl font-extrabold mb-6 text-center">Gallery</h3>
+//         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+//           {gallery.map((src, i) => (
+//             <div key={i} className="relative h-64 rounded-3xl overflow-hidden shadow-xl group">
+//               <img src={src} alt={`${product.name} ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+//               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition" />
+//             </div>
+//           ))}
+//         </div>
+//       </section>
+
+//       {/* VIDEO MODAL */}
+//       <AnimatePresence>{videoOpen && <VideoModal src={product.video} name={product.name} close={() => setVideoOpen(false)} />}</AnimatePresence>
+//     </main>
+//   );
+// }
