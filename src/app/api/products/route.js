@@ -10,8 +10,11 @@
  * You must configure MongoDB URI properly via environment variables.
  */
 
-import { dbConnect } from "../../../../lib/mongoose";
-import Product from "../../../../models/Product";
+// import { dbConnect } from "../../../../lib/mongoose";
+// import Product from "../../../../models/Product";
+
+import connect from '../../../../lib/mongoose'
+import Product from '../../../../models/Product'
 
 export async function GET() {
   // Optional: Detect static export phase to return dummy data

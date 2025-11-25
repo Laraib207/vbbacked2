@@ -1,6 +1,11 @@
-import { dbConnect } from "../../../../../lib/mongoose";
-import Order from "../../../../../models/Order";
-import Product from "../../../../../models/Product";
+// import { dbConnect } from "../../../../../lib/mongoose";
+// import Order from "../../../../../models/Order";
+// import Product from "../../../../../models/Product";
+import connect from '../../../../../lib/mongoose'
+import Order from '../../../../../models/Order'
+import Product from '../../../../../models/Product'
+
+
 import nodemailer from "nodemailer";
 
 export async function POST(req) {

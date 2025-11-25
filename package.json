@@ -4,8 +4,10 @@
   "scripts": {
     "dev": "next dev -p 3002",
     "build": "next build",
+    "build:static": "rm -rf .next out && next build && next export && zip -r vbbacked2-static.zip out/",
     "start": "next start -p 3002",
-    "export": "next export"
+    "export": "next export",
+    "lint": "next lint"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
