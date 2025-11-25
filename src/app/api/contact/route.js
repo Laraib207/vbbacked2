@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
-import { addAbortListener } from 'nodemailer/lib/xoauth2'
 
 const prisma = new PrismaClient()
 
