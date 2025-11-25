@@ -383,7 +383,8 @@ export default function AboutPage() {
                 <p>
                   The processes and facilities at our plant match the highest standards. The Crude Edible oils
                   ensures that only the purest product is dispatched from our facility. The Refining is undertaken
-                  by world class process through which flows out the purest form of cooking oil.
+                  by world class process through which flows out the purest form of cooking oil And supricess. this is the wonderful and best quality all of these
+                  .
                 </p>
                 
                 <p>
