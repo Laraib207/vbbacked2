@@ -799,6 +799,211 @@
 
 
 
+
+////// This is version 1 code...
+
+// "use client";
+// import React, { useState, useRef, useEffect } from "react";
+
+// const slidesInitial = [
+//   {
+//     id: 1,
+//     title: "1 Liter Bottle",
+//     desc: "Perfect for daily cooking needs with authentic mustard oil flavor.",
+//     image: "/images/1.png",
+//   },
+//   {
+//     id: 2,
+//     title: "Jar Packaging",
+//     desc: "Premium quality in convenient jar sizes for modern kitchens.",
+//     image: "/images/2.png",
+//   },
+//   {
+//     id: 3,
+//     title: "15L Tin",
+//     desc: "Bulk packaging for commercial use and large families.",
+//     image: "/images/3.png",
+//   },
+//   {
+//     id: 4,
+//     title: "500ml Bottle",
+//     desc: "Compact and portable packaging for small households.",
+//     image: "/images/4.png",
+//   },
+//   {
+//     id: 5,
+//     title: "Economy Pack",
+//     desc: "Value for money with premium quality mustard oil.",
+//     image: "/images/5.png",
+//   },
+// ];
+
+// export default function VeerBharatHero() {
+//   const [slides, setSlides] = useState(slidesInitial);
+//   const animRef = useRef(false);
+
+//   const next = () => {
+//     if (animRef.current) return;
+//     animRef.current = true;
+//     setSlides((s) => {
+//       const copy = [...s];
+//       const first = copy.shift();
+//       copy.push(first);
+//       return copy;
+//     });
+//     setTimeout(() => (animRef.current = false), 600);
+//   };
+
+//   const prev = () => {
+//     if (animRef.current) return;
+//     animRef.current = true;
+//     setSlides((s) => {
+//       const copy = [...s];
+//       const last = copy.pop();
+//       copy.unshift(last);
+//       return copy;
+//     });
+//     setTimeout(() => (animRef.current = false), 600);
+//   };
+
+//   return (
+//     <section className="relative w-full py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 overflow-hidden">
+//       {/* Background decorative elements */}
+//       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+//         <div className="absolute top-10 left-10 w-64 h-64 bg-yellow-200 rounded-full blur-3xl" />
+//         <div className="absolute bottom-10 right-10 w-80 h-80 bg-orange-200 rounded-full blur-3xl" />
+//       </div>
+
+//       <div className="relative z-10 max-w-7xl mx-auto px-6">
+//         {/* Section Title */}
+//         <div className="text-center mb-16">
+//           <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-4">
+//             Pure <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-yellow-600 to-amber-600">Goodness</span> From Nature's Heart
+//           </h2>
+//           <p className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-6">
+//             Experience the authentic taste of <strong className="text-orange-700">100% pure cold-pressed</strong> mustard oil, 
+//             crafted with traditional <strong className="text-orange-700">Kachi Ghani methods</strong> for maximum nutrition and flavor.
+//           </p>
+//         </div>
+
+//         {/* Carousel */}
+//         <div className="relative bg-white/40 backdrop-blur-sm rounded-3xl shadow-2xl p-8">
+//           <div className="relative h-[500px] overflow-hidden rounded-2xl">
+//             <div className="relative w-full h-full">
+//               {slides.map((slide, idx) => {
+//                 const position =
+//                   idx === 1 ? "center"
+//                   : idx === 0 ? "left"
+//                   : idx === 2 ? "right-1"
+//                   : idx === 3 ? "right-2"
+//                   : "hidden";
+//                 return <SlideCard key={slide.id} slide={slide} position={position} />;
+//               })}
+//             </div>
+
+//             {/* Navigation Buttons */}
+//             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-40">
+//               <button
+//                 onClick={prev}
+//                 className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm shadow-xl border-2 border-orange-300 hover:border-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95"
+//                 aria-label="Previous"
+//               >
+//                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+//                 </svg>
+//               </button>
+//               <button
+//                 onClick={next}
+//                 className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95"
+//                 aria-label="Next"
+//               >
+//                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+//                 </svg>
+//               </button>
+//             </div>
+//           </div>
+
+//           {/* Indicator Dots */}
+//           <div className="flex justify-center gap-2 mt-6">
+//             {[0, 1, 2, 3, 4].map((i) => (
+//               <div
+//                 key={i}
+//                 className={`h-2 rounded-full transition-all duration-300 ${
+//                   i === 1 ? 'w-8 bg-orange-500' : 'w-2 bg-gray-300'
+//                 }`}
+//               />
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// function SlideCard({ slide, position }) {
+//   let baseClasses = "absolute transition-all duration-700 ease-out rounded-2xl overflow-hidden";
+//   let style = {};
+//   let contentVisible = false;
+//   let zIndex = 10;
+
+//   if (position === "center") {
+//     baseClasses += " left-0 top-0 w-full h-full shadow-2xl bg-gradient-to-br from-yellow-100 to-amber-100";
+//     contentVisible = true;
+//     zIndex = 30;
+//   } else if (position === "left") {
+//     baseClasses += " left-0 top-0 w-full h-full opacity-0";
+//     style = { transform: "translate(-120%, 0) scale(0.8)" };
+//     zIndex = 5;
+//   } else if (position === "right-1") {
+//     baseClasses += " top-1/2 -translate-y-1/2 left-[45%] w-[240px] h-[300px] shadow-xl bg-gradient-to-br from-yellow-50 to-amber-50";
+//     style = { transform: "translate(0, -50%)" };
+//     zIndex = 25;
+//   } else if (position === "right-2") {
+//     baseClasses += " top-1/2 -translate-y-1/2 left-[65%] w-[200px] h-[250px] shadow-lg opacity-80 bg-gradient-to-br from-yellow-50 to-amber-50";
+//     style = { transform: "translate(0, -50%)" };
+//     zIndex = 20;
+//   } else {
+//     baseClasses += " top-1/2 -translate-y-1/2 left-[85%] w-[180px] h-[220px] opacity-0 pointer-events-none";
+//     style = { transform: "translate(0, -50%)" };
+//     zIndex = 15;
+//   }
+
+//   return (
+//     <div className={baseClasses} style={{ ...style, zIndex }}>
+//       {/* Product Image */}
+//       <div className="absolute inset-0 flex items-center justify-center p-8">
+//         <img 
+//           src={slide.image} 
+//           alt={slide.title}
+//           className="w-full h-full object-contain drop-shadow-2xl"
+//         />
+//       </div>
+      
+//       {/* Content overlay for center slide */}
+//       <div className={`absolute top-1/2 left-16 transform -translate-y-1/2 max-w-md ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity duration-700`}>
+//         <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-2xl">
+//           <div className="inline-block px-4 py-1 bg-orange-500 rounded-full mb-3">
+//             <span className="text-white text-xs font-bold tracking-wider">PREMIUM QUALITY</span>
+//           </div>
+//           <h3 className="text-4xl font-black text-gray-900 mb-3 tracking-tight">
+//             {slide.title}
+//           </h3>
+//           <p className="text-gray-700 text-base leading-relaxed mb-4">
+//             {slide.desc}
+//           </p>
+//           <button className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 active:scale-95">
+//             Learn More →
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -808,36 +1013,48 @@ const slidesInitial = [
     title: "1 Liter Bottle",
     desc: "Perfect for daily cooking needs with authentic mustard oil flavor.",
     image: "/images/1.png",
+    gradient: "from-amber-400 to-orange-500",
+    accent: "bg-amber-500"
   },
   {
     id: 2,
     title: "Jar Packaging",
     desc: "Premium quality in convenient jar sizes for modern kitchens.",
     image: "/images/2.png",
+    gradient: "from-emerald-400 to-cyan-500",
+    accent: "bg-emerald-500"
   },
   {
     id: 3,
     title: "15L Tin",
     desc: "Bulk packaging for commercial use and large families.",
     image: "/images/3.png",
+    gradient: "from-violet-400 to-purple-500",
+    accent: "bg-violet-500"
   },
   {
     id: 4,
     title: "500ml Bottle",
     desc: "Compact and portable packaging for small households.",
     image: "/images/4.png",
+    gradient: "from-rose-400 to-pink-500",
+    accent: "bg-rose-500"
   },
   {
     id: 5,
     title: "Economy Pack",
     desc: "Value for money with premium quality mustard oil.",
     image: "/images/5.png",
+    gradient: "from-blue-400 to-indigo-500",
+    accent: "bg-blue-500"
   },
 ];
 
 export default function VeerBharatHero() {
   const [slides, setSlides] = useState(slidesInitial);
+  const [activeSlide, setActiveSlide] = useState(1);
   const animRef = useRef(false);
+  const autoPlayRef = useRef(null);
 
   const next = () => {
     if (animRef.current) return;
@@ -848,7 +1065,8 @@ export default function VeerBharatHero() {
       copy.push(first);
       return copy;
     });
-    setTimeout(() => (animRef.current = false), 600);
+    setActiveSlide((prev) => (prev % 5) + 1);
+    setTimeout(() => (animRef.current = false), 800);
   };
 
   const prev = () => {
@@ -860,32 +1078,109 @@ export default function VeerBharatHero() {
       copy.unshift(last);
       return copy;
     });
-    setTimeout(() => (animRef.current = false), 600);
+    setActiveSlide((prev) => (prev === 1 ? 5 : prev - 1));
+    setTimeout(() => (animRef.current = false), 800);
   };
 
+  const goToSlide = (index) => {
+    if (animRef.current) return;
+    const currentIndex = slides.findIndex(slide => slide.id === activeSlide);
+    const diff = index - currentIndex;
+    
+    if (diff === 0) return;
+    
+    animRef.current = true;
+    if (diff > 0) {
+      for (let i = 0; i < diff; i++) {
+        setTimeout(() => next(), i * 150);
+      }
+    } else {
+      for (let i = 0; i < Math.abs(diff); i++) {
+        setTimeout(() => prev(), i * 150);
+      }
+    }
+    setTimeout(() => (animRef.current = false), Math.abs(diff) * 150 + 300);
+  };
+
+  useEffect(() => {
+    autoPlayRef.current = setInterval(next, 5000);
+    return () => clearInterval(autoPlayRef.current);
+  }, []);
+
+  const pauseAutoPlay = () => clearInterval(autoPlayRef.current);
+  const resumeAutoPlay = () => {
+    autoPlayRef.current = setInterval(next, 5000);
+  };
+
+  const currentSlide = slides[1];
+
   return (
-    <section className="relative w-full py-20 bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-yellow-200 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-orange-200 rounded-full blur-3xl" />
+    <section 
+      className="relative w-full min-h-screen py-16 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden"
+      onMouseEnter={pauseAutoPlay}
+      onMouseLeave={resumeAutoPlay}
+    >
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0 opacity-30">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-gradient-to-r from-amber-400/20 to-orange-500/20 animate-float"
+            style={{
+              width: Math.random() * 100 + 50 + 'px',
+              height: Math.random() * 100 + 50 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              animationDelay: Math.random() * 5 + 's',
+              animationDuration: Math.random() * 10 + 10 + 's'
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glowing Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-orange-400/5 rounded-full blur-2xl animate-pulse delay-500" />
+      </div>
+
+      {/* Animated Grid */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          animation: 'gridMove 20s linear infinite'
+        }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Section Title */}
+        {/* Enhanced Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-4">
-            Pure <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-yellow-600 to-amber-600">Goodness</span> From Nature's Heart
+          <div className="inline-block mb-6 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full blur-md opacity-75 animate-pulse" />
+            <span className="relative text-amber-200 text-sm font-bold tracking-widest uppercase border border-amber-400/30 rounded-full px-6 py-2 bg-slate-900/50 backdrop-blur-sm">
+              Premium Collection
+            </span>
+          </div>
+          <h2 className="text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-orange-300 to-amber-200 mb-6 tracking-tight leading-tight">
+            Pure Goodness
+            <span className="block text-4xl md:text-5xl font-light text-amber-100/80 mt-2">
+              From Nature's Heart
+            </span>
           </h2>
-          <p className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed mt-6">
-            Experience the authentic taste of <strong className="text-orange-700">100% pure cold-pressed</strong> mustard oil, 
-            crafted with traditional <strong className="text-orange-700">Kachi Ghani methods</strong> for maximum nutrition and flavor.
+          <p className="max-w-2xl mx-auto text-lg text-amber-100/70 leading-relaxed font-light">
+            Experience the authentic taste of 100% pure cold-pressed mustard oil, 
+            crafted with traditional Kachi Ghani methods for maximum nutrition and flavor.
           </p>
         </div>
 
-        {/* Carousel */}
-        <div className="relative bg-white/40 backdrop-blur-sm rounded-3xl shadow-2xl p-8">
-          <div className="relative h-[500px] overflow-hidden rounded-2xl">
+        {/* Enhanced Carousel Container */}
+        <div className="relative bg-slate-800/30 backdrop-blur-md rounded-3xl p-8 border border-amber-500/20 shadow-2xl shadow-amber-500/10">
+          <div className="relative h-[600px] overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-amber-500/10">
             <div className="relative w-full h-full">
               {slides.map((slide, idx) => {
                 const position =
@@ -893,47 +1188,128 @@ export default function VeerBharatHero() {
                   : idx === 0 ? "left"
                   : idx === 2 ? "right-1"
                   : idx === 3 ? "right-2"
-                  : "hidden";
+                  : "right-3";
                 return <SlideCard key={slide.id} slide={slide} position={position} />;
               })}
             </div>
 
-            {/* Navigation Buttons */}
+            {/* Enhanced Navigation Buttons */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-40">
               <button
                 onClick={prev}
-                className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm shadow-xl border-2 border-orange-300 hover:border-orange-500 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95"
+                className="group w-14 h-14 rounded-2xl bg-slate-800/80 backdrop-blur-md border border-amber-500/30 hover:bg-amber-500 hover:border-amber-400 text-amber-200 transition-all duration-500 flex items-center justify-center hover:scale-110 hover:rotate-12 shadow-lg hover:shadow-amber-500/25"
                 aria-label="Previous"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <button
                 onClick={next}
-                className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-110 active:scale-95"
+                className="group w-14 h-14 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg hover:shadow-amber-500/25 transition-all duration-500 flex items-center justify-center hover:scale-110 hover:-rotate-12"
                 aria-label="Next"
               >
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
+
+            {/* Current Slide Indicator */}
+            <div className="absolute top-6 right-6 z-40">
+              <div className="bg-slate-900/80 backdrop-blur-md rounded-full px-4 py-2 border border-amber-500/30">
+                <span className="text-amber-200 text-sm font-semibold">
+                  {String(activeSlide).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Indicator Dots */}
-          <div className="flex justify-center gap-2 mt-6">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === 1 ? 'w-8 bg-orange-500' : 'w-2 bg-gray-300'
+          {/* Enhanced Indicator Dots */}
+          <div className="flex justify-center gap-3 mt-8">
+            {slidesInitial.map((slide, i) => (
+              <button
+                key={slide.id}
+                onClick={() => goToSlide(i)}
+                className={`group relative transition-all duration-500 ${
+                  slide.id === activeSlide 
+                    ? 'scale-125' 
+                    : 'scale-100 hover:scale-110'
                 }`}
-              />
+              >
+                <div className={`h-2 rounded-full transition-all duration-500 ${
+                  slide.id === activeSlide 
+                    ? `w-8 ${slide.accent} shadow-lg ${slide.accent.replace('bg-', 'shadow-')}/50` 
+                    : 'w-2 bg-slate-600 hover:bg-slate-400'
+                }`} />
+                <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800/90 backdrop-blur-md rounded-lg px-3 py-1 border border-slate-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                  <span className="text-amber-100 text-xs font-medium">{slide.title}</span>
+                </div>
+              </button>
             ))}
           </div>
         </div>
+
+        {/* Enhanced Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          {[
+            { 
+              icon: "🌿", 
+              title: "100% Natural", 
+              desc: "Pure & Organic ingredients",
+              gradient: "from-emerald-500 to-teal-600"
+            },
+            { 
+              icon: "⚡", 
+              title: "Cold Pressed", 
+              desc: "Traditional Kachi Ghani method",
+              gradient: "from-amber-500 to-orange-600"
+            },
+            { 
+              icon: "✓", 
+              title: "Quality Tested", 
+              desc: "Laboratory certified product",
+              gradient: "from-blue-500 to-indigo-600"
+            }
+          ].map((feature, idx) => (
+            <div 
+              key={idx} 
+              className="group relative bg-slate-800/30 backdrop-blur-md rounded-2xl p-8 border border-slate-600/30 hover:border-amber-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/10"
+            >
+              {/* Background Gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+              
+              {/* Animated Border */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10`}>
+                <div className="absolute inset-[2px] bg-slate-900 rounded-2xl" />
+              </div>
+
+              <div className="relative text-center">
+                <div className="text-5xl mb-4 transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500">
+                  {feature.icon}
+                </div>
+                <h4 className="text-xl font-bold text-amber-100 mb-3">{feature.title}</h4>
+                <p className="text-amber-100/70 text-sm leading-relaxed">{feature.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Add CSS animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        @keyframes gridMove {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(50px, 50px); }
+        }
+        .animate-float {
+          animation: float 20s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }
@@ -943,57 +1319,116 @@ function SlideCard({ slide, position }) {
   let style = {};
   let contentVisible = false;
   let zIndex = 10;
+  let scale = 1;
+  let opacity = 1;
+  let blur = "blur(0px)";
 
   if (position === "center") {
-    baseClasses += " left-0 top-0 w-full h-full shadow-2xl bg-gradient-to-br from-yellow-100 to-amber-100";
+    baseClasses += " left-0 top-0 w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 shadow-2xl";
     contentVisible = true;
     zIndex = 30;
+    scale = 1;
   } else if (position === "left") {
-    baseClasses += " left-0 top-0 w-full h-full opacity-0";
-    style = { transform: "translate(-120%, 0) scale(0.8)" };
+    baseClasses += " left-0 top-0 w-full h-full";
+    style = { 
+      transform: "translate(-120%, 0) scale(0.8)",
+      filter: "blur(8px)"
+    };
     zIndex = 5;
+    opacity = 0.3;
   } else if (position === "right-1") {
-    baseClasses += " top-1/2 -translate-y-1/2 left-[45%] w-[240px] h-[300px] shadow-xl bg-gradient-to-br from-yellow-50 to-amber-50";
-    style = { transform: "translate(0, -50%)" };
+    baseClasses += " top-1/2 -translate-y-1/2 left-[45%] w-[280px] h-[350px] bg-gradient-to-br from-slate-700 to-slate-800 shadow-xl border border-amber-500/20";
+    style = { transform: "translate(0, -50%) scale(0.9)" };
     zIndex = 25;
+    opacity = 0.8;
+    scale = 0.9;
   } else if (position === "right-2") {
-    baseClasses += " top-1/2 -translate-y-1/2 left-[65%] w-[200px] h-[250px] shadow-lg opacity-80 bg-gradient-to-br from-yellow-50 to-amber-50";
-    style = { transform: "translate(0, -50%)" };
+    baseClasses += " top-1/2 -translate-y-1/2 left-[65%] w-[240px] h-[300px] bg-gradient-to-br from-slate-700 to-slate-800 shadow-lg border border-amber-500/10 opacity-60";
+    style = { transform: "translate(0, -50%) scale(0.8)" };
     zIndex = 20;
+    opacity = 0.6;
+    scale = 0.8;
   } else {
-    baseClasses += " top-1/2 -translate-y-1/2 left-[85%] w-[180px] h-[220px] opacity-0 pointer-events-none";
-    style = { transform: "translate(0, -50%)" };
+    baseClasses += " top-1/2 -translate-y-1/2 left-[85%] w-[200px] h-[250px] bg-gradient-to-br from-slate-700 to-slate-800 shadow-md border border-amber-500/5 opacity-30 pointer-events-none";
+    style = { transform: "translate(0, -50%) scale(0.7)" };
     zIndex = 15;
+    opacity = 0.3;
+    scale = 0.7;
   }
 
   return (
-    <div className={baseClasses} style={{ ...style, zIndex }}>
-      {/* Product Image */}
-      <div className="absolute inset-0 flex items-center justify-center p-8">
-        <img 
-          src={slide.image} 
-          alt={slide.title}
-          className="w-full h-full object-contain drop-shadow-2xl"
-        />
-      </div>
-      
-      {/* Content overlay for center slide */}
-      <div className={`absolute top-1/2 left-16 transform -translate-y-1/2 max-w-md ${contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity duration-700`}>
-        <div className="bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-2xl">
-          <div className="inline-block px-4 py-1 bg-orange-500 rounded-full mb-3">
-            <span className="text-white text-xs font-bold tracking-wider">PREMIUM QUALITY</span>
-          </div>
-          <h3 className="text-4xl font-black text-gray-900 mb-3 tracking-tight">
-            {slide.title}
-          </h3>
-          <p className="text-gray-700 text-base leading-relaxed mb-4">
-            {slide.desc}
-          </p>
-          <button className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 active:scale-95">
-            Learn More →
-          </button>
+    <div 
+      className={baseClasses} 
+      style={{ 
+        ...style, 
+        zIndex,
+        opacity,
+        transform: `${style.transform || ''} scale(${scale})`
+      }}
+    >
+      {/* Product Image with Enhanced Styling */}
+      <div className={`absolute inset-0 flex items-center justify-center p-12 bg-gradient-to-br from-${slide.gradient.split(' ')[0]}/5 to-${slide.gradient.split(' ')[2]}/5`}>
+        <div className="relative w-full h-full">
+          {/* Glow Effect */}
+          <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} rounded-2xl opacity-20 blur-xl scale-105`} />
+          
+          <img 
+            src={slide.image} 
+            alt={slide.title}
+            className="relative w-full h-full object-contain drop-shadow-2xl transition-transform duration-700 hover:scale-110 z-10"
+          />
         </div>
       </div>
+      
+      {/* Enhanced Content Overlay */}
+      <div className={`absolute top-1/2 left-12 transform -translate-y-1/2 max-w-md ${
+        contentVisible 
+          ? "opacity-100 translate-x-0" 
+          : "opacity-0 -translate-x-8 pointer-events-none"
+      } transition-all duration-700 ease-out`}>
+        <div className="relative">
+          {/* Background with Blur */}
+          <div className="bg-slate-900/80 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-amber-500/20">
+            
+            {/* Accent Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-lg">
+              <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+              <span className="text-white text-xs font-bold tracking-widest uppercase">Premium</span>
+            </div>
+            
+            {/* Title */}
+            <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-200 mb-4 leading-tight">
+              {slide.title}
+            </h3>
+            
+            {/* Description */}
+            <p className="text-amber-100/80 leading-relaxed text-lg mb-6 font-light">
+              {slide.desc}
+            </p>
+            
+            {/* Enhanced Button */}
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-amber-500/25 transition-all duration-500 hover:scale-105 active:scale-95 overflow-hidden">
+              
+              {/* Shine Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+              
+              <span className="relative flex items-center gap-2">
+                Explore More
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          
+          {/* Floating Elements */}
+          <div className="absolute -top-4 -right-4 w-8 h-8 bg-amber-400 rounded-full blur-md opacity-60 animate-pulse" />
+          <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-orange-400 rounded-full blur-md opacity-40 animate-pulse delay-500" />
+        </div>
+      </div>
+
+      {/* Slide-specific Gradient Overlay */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} opacity-5 pointer-events-none`} />
     </div>
   );
 }

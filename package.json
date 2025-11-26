@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev -p 3002",
     "build": "prisma generate && next build",
-    "build:static": "rm -rf .next out && prisma generate && next build && next export && zip -r vbbacked2-static.zip out/",
+    "build:static": "rm -rf .next out && prisma generate && next build && zip -r vbbacked2-static.zip out/",
     "start": "next start -p 3002",
     "export": "next export",
     "lint": "next lint",
