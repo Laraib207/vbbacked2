@@ -348,8 +348,8 @@ const Footer = () => {
                   { icon: '𝕏', href: 'https://twitter.com' },
                   { icon: 'in', href: 'https://linkedin.com' },
                   { icon: '📷', href: 'https://www.instagram.com/veerbharatofficial' },
-                  { icon: '▶', href: 'https://youtube.com/@veerbharatofficial' },
-                  { icon: '💬', href: 'https://wa.me/918802000091', color: 'bg-green-600 hover:bg-green-700' }
+                  { icon: '▶', href: 'https://www.youtube.com/@VeerBharatofficial1' },
+                  { icon: '💬', href: 'https://wa.me/9266328444', color: 'bg-green-600 hover:bg-green-700' }
                 ].map((social) => (
                   <a 
                     key={social.icon}

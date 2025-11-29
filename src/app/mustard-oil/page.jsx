@@ -497,6 +497,10 @@
 
 
 
+// src/app/mustard-oil/page.jsx
+
+// src/app/mustard-oil/page.jsx
+
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -530,7 +534,7 @@ const mustardVariants = [
 ];
 
 /* ------------------------------------------------------------- */
-/* 3.  Hero Billboard                                              */
+/* 3.  Hero Billboard (लिंक FIX किया गया)                         */
 /* ------------------------------------------------------------- */
 function HeroBillboard() {
   const [idx, setIdx] = useState(0);
@@ -555,7 +559,14 @@ function HeroBillboard() {
         </div>
         <div className="mt-8 flex gap-4 justify-center">
           <button onClick={() => addToCart(v)} className="rounded-full px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold shadow-2xl hover:scale-105 transition">Add to Cart</button>
-          <Link href="#all" className="rounded-full px-8 py-4 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition">Explore All</Link>
+          
+          {/* FIX 1: .jsx हटा दिया गया है */}
+          <Link 
+            href={`/mustardcategory/${v.slug}`} 
+            className="rounded-full px-8 py-4 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition"
+          >
+            View Details →
+          </Link>
         </div>
       </motion.div>
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
@@ -595,7 +606,7 @@ function VideoModal({ modal, close }) {
 }
 
 /* ------------------------------------------------------------- */
-/* 5.  Per-Variant Luxe Section                                    */
+/* 5.  Per-Variant Luxe Section (लिंक FIX किया गया)               */
 /* ------------------------------------------------------------- */
 function VariantSection({ product, index }) {
   const isEven = index % 2 === 0;
@@ -626,7 +637,14 @@ function VariantSection({ product, index }) {
           </div>
           <div className="flex gap-4">
             <button onClick={() => addToCart(product)} className="rounded-full px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-bold shadow-2xl hover:scale-105 transition">Add to Cart</button>
-            <button onClick={() => setReveal(true)} className={`rounded-full px-8 py-4 border-2 ${isEven ? "border-gray-900 text-gray-900" : "border-white text-white"} font-bold hover:scale-105 transition`}>🎥 Watch Story</button>
+            
+            {/* FIX 2: .jsx हटा दिया गया है */}
+            <Link 
+              href={`/mustardcategory/${product.slug}`} 
+              className={`rounded-full px-8 py-4 border-2 ${isEven ? "border-gray-900 text-gray-900" : "border-white text-white"} font-bold hover:scale-105 transition hover:bg-white/10 hover:border-white`}
+            >
+              🔍 View Details
+            </Link>
           </div>
           {/* micro specs */}
           <ul className={`grid grid-cols-2 gap-4 text-sm ${isEven ? "text-gray-600" : "text-gray-400"}`}>

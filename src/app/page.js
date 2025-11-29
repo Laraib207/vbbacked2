@@ -1187,7 +1187,7 @@ export default function Home() {
 
       {/* WhatsApp button */}
       <a
-        href="https://wa.me/6205771930"
+        href="https://wa.me/9266328444"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed right-5 bottom-5 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 shadow-lg text-white hover:scale-105 transition"
